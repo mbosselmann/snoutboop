@@ -1,7 +1,13 @@
-import "./App.css";
+import { useState } from "react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
+import "./App.css";
+
+const options: string[] = ["clock", "glitch", "pig"];
+
 function App() {
+  const [selectedOption, setSelectedOption] = useState<string>(options[0]);
+
   return (
     <main>
       <header>
@@ -12,10 +18,35 @@ function App() {
         />
         <h1>SnoutBoop</h1>
       </header>
-      <ul>
-        <li>Clock</li>
-        <li>LetterGlitch</li>
-        <li>Pig</li>
+      <p>{selectedOption}</p>
+      <ul className="list">
+        <li>
+          <button
+            className="list-button"
+            type="button"
+            onClick={() => setSelectedOption("clock")}
+          >
+            🕰️
+          </button>
+        </li>
+        <li>
+          <button
+            className="list-button"
+            type="button"
+            onClick={() => setSelectedOption("letterGlitch")}
+          >
+            👾
+          </button>
+        </li>
+        <li>
+          <button
+            className="list-button"
+            type="button"
+            onClick={() => setSelectedOption("pig")}
+          >
+            🐽
+          </button>
+        </li>
       </ul>
     </main>
   );
