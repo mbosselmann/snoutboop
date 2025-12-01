@@ -1,50 +1,53 @@
 import { useState } from "react";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 import "./App.css";
+import SplashScreen from "./SplashScreen";
 
 const options: string[] = ["clock", "glitch", "pig"];
 
 function App() {
-  const [selectedOption, setSelectedOption] = useState<string>(options[0]);
+  const [showSplash, setShowSplash] = useState(true);
+  const [selectedOption, setSelectedOption] = useState<string>(options[2]);
+
+  if (showSplash) {
+    return <SplashScreen onLoadingComplete={() => setShowSplash(false)} />;
+  }
 
   return (
-    <main>
-      <header>
-        <DotLottieReact
-          src="https://lottie.host/850857d4-5bad-4e15-8412-25b7a20aed81/01sG1gKWau.lottie"
-          loop
-          autoplay
-        />
-        <h1>SnoutBoop</h1>
-      </header>
-      <p>{selectedOption}</p>
+    <main className={"main--" + selectedOption}>
+      <h1>Choose Boop:</h1>
       <ul className="list">
         <li>
           <button
-            className="list-button"
+            className={`list-button ${
+              selectedOption === "clock" ? "list-button--clock" : ""
+            }`}
             type="button"
             onClick={() => setSelectedOption("clock")}
           >
-            🕰️
+            Clock
           </button>
         </li>
         <li>
           <button
-            className="list-button"
+            className={`list-button ${
+              selectedOption === "glitch" ? "list-button--glitch" : ""
+            }`}
             type="button"
-            onClick={() => setSelectedOption("letterGlitch")}
+            onClick={() => setSelectedOption("glitch")}
           >
-            👾
+            Glitch
           </button>
         </li>
         <li>
           <button
-            className="list-button"
+            className={`list-button ${
+              selectedOption === "pig" ? "list-button--pig" : ""
+            }`}
             type="button"
             onClick={() => setSelectedOption("pig")}
           >
-            🐽
+            Pig
           </button>
         </li>
       </ul>
