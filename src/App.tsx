@@ -2,55 +2,64 @@ import { useState } from "react";
 
 import "./App.css";
 import SplashScreen from "./SplashScreen";
+import { ClockIcon, GlitchIcon, PigIcon, FrogIcon } from "./Icons";
 
-const options: string[] = ["clock", "glitch", "pig"];
+type Option = "clock" | "glitch" | "pig" | "pomofroggo";
+
+const options: { id: Option; label: string}[] = [
+  { id: "clock", label: "Clock"},
+  { id: "glitch", label: "Letter Glitch"},
+  { id: "pig", label: "Pig"},
+  { id: "pomofroggo", label: "Pomofroggo"},
+];
+
+const iconMap: Record<Option, React.FC<{ className?: string }>> = {
+  clock: ClockIcon,
+  glitch: GlitchIcon,
+  pig: PigIcon,
+  pomofroggo: FrogIcon,
+};
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
-  const [selectedOption, setSelectedOption] = useState<string>(options[2]);
+  const [selectedOption, setSelectedOption] = useState<Option>("pomofroggo");
 
   if (showSplash) {
     return <SplashScreen onLoadingComplete={() => setShowSplash(false)} />;
   }
 
   return (
-    <main className={"main--" + selectedOption}>
-      <h1>Choose Boop:</h1>
-      <ul className="list">
-        <li>
-          <button
-            className={`list-button ${
-              selectedOption === "clock" ? "list-button--clock" : ""
-            }`}
-            type="button"
-            onClick={() => setSelectedOption("clock")}
-          >
-            Clock
-          </button>
-        </li>
-        <li>
-          <button
-            className={`list-button ${
-              selectedOption === "glitch" ? "list-button--glitch" : ""
-            }`}
-            type="button"
-            onClick={() => setSelectedOption("glitch")}
-          >
-            Glitch
-          </button>
-        </li>
-        <li>
-          <button
-            className={`list-button ${
-              selectedOption === "pig" ? "list-button--pig" : ""
-            }`}
-            type="button"
-            onClick={() => setSelectedOption("pig")}
-          >
-            Pig
-          </button>
-        </li>
-      </ul>
+    <main className={`main main--${selectedOption}`}>
+      {/* Background orbs for glassmorphism effect */}
+      <div className="bg-orb bg-orb--1"></div>
+      <div className="bg-orb bg-orb--2"></div>
+      <div className="bg-orb bg-orb--3"></div>
+
+      <div className="content">
+        
+        <ul className="card-grid">
+          {options.map((option) => {
+            const Icon = iconMap[option.id];
+            const isSelected = selectedOption === option.id;
+
+            return (
+              <li key={option.id}>
+                <button
+                  className={`glass-card ${isSelected ? `glass-card--${option.id}` : ""}`}
+                  type="button"
+                  onClick={() => setSelectedOption(option.id)}
+                  aria-pressed={isSelected}
+                >
+                  <div className="card-icon">
+                    <Icon className="icon" />
+                  </div>
+                  <span className="card-label">{option.label}</span>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </main>
   );
 }
