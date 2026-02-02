@@ -35,122 +35,68 @@
   gap: 0.5rem;
 }
 
-.splash-header > :first-child {
-  max-width: 180px;
-}
-
 .splash-title {
-  font-family: "Fredericka the Great", cursive;
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-family: "Nova Round", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
   color: rgba(255, 255, 255, 0.95);
   margin: 0;
+  letter-spacing: -0.02em;
 }
 
-/* Icon Spinner */
+/* Icon Spinner - Horizontal Layout */
 .icon-spinner {
   position: relative;
-  width: 120px;
-  height: 120px;
-  z-index: 1;
-}
-
-.icon-orbit {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  animation: orbit-spin 3s linear infinite;
-}
-
-.icon-item {
-  position: absolute;
-  width: 32px;
-  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: counter-spin 3s linear infinite;
+  gap: 1.5rem;
+  z-index: 1;
+  padding: 1rem;
+}
+
+.icon-item {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: jump 1.2s ease-in-out infinite;
 }
 
 .icon-item svg {
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   filter: drop-shadow(0 0 8px currentColor);
   transition: transform 0.3s ease;
 }
 
-/* Position icons at cardinal points */
+/* Icon colors */
 .icon-clock {
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   color: #38bdf8;
+  animation-delay: 0s;
 }
 
 .icon-glitch {
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
   color: #a78bfa;
+  animation-delay: 0.15s;
 }
 
 .icon-pig {
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
   color: #f472b6;
+  animation-delay: 0.3s;
 }
 
 .icon-frog {
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
   color: #4ade80;
+  animation-delay: 0.45s;
 }
 
-/* Center dot */
-.spinner-center-dot {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
-  background: linear-gradient(135deg, #38bdf8, #a78bfa, #f472b6, #4ade80);
-  border-radius: 50%;
-  animation: pulse-glow 1.5s ease-in-out infinite;
-}
-
-@keyframes orbit-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes counter-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(-360deg);
-  }
-}
-
-@keyframes pulse-glow {
+@keyframes jump {
   0%, 100% {
-    box-shadow: 
-      0 0 10px rgba(56, 189, 248, 0.5),
-      0 0 20px rgba(167, 139, 250, 0.3),
-      0 0 30px rgba(244, 114, 182, 0.2);
-    transform: translate(-50%, -50%) scale(1);
+    transform: translateY(0);
   }
   50% {
-    box-shadow: 
-      0 0 15px rgba(56, 189, 248, 0.7),
-      0 0 30px rgba(167, 139, 250, 0.5),
-      0 0 45px rgba(74, 222, 128, 0.3);
-    transform: translate(-50%, -50%) scale(1.2);
+    transform: translateY(-20px);
   }
 }

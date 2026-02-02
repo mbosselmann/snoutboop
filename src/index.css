@@ -6,6 +6,15 @@
   src: url("./fonts/fredericka-the-great-v21-latin-regular.woff2") format("woff2");
 }
 
+@font-face {
+  font-display: swap;
+  font-family: "Nova Round";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/NovaRound-Regular.ttf");
+}
+
+
 *,
 *::before,
 *::after {

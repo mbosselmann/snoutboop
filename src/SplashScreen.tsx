@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { ClockIcon, GlitchIcon, PigIcon, FrogIcon } from "./Icons";
 import "./SplashScreen.css";
 
@@ -28,30 +27,22 @@ function SplashScreen({
   return (
     <main className="splash-screen">
       <header className="splash-header">
-        <DotLottieReact
-          src="https://lottie.host/850857d4-5bad-4e15-8412-25b7a20aed81/01sG1gKWau.lottie"
-          loop
-          autoplay
-        />
         <h1 className="splash-title">SnoutBoop</h1>
       </header>
       
       <div className="icon-spinner">
-        <div className="icon-orbit">
-          <div className="icon-item icon-clock">
-            <ClockIcon />
-          </div>
-          <div className="icon-item icon-glitch">
-            <GlitchIcon />
-          </div>
-          <div className="icon-item icon-pig">
-            <PigIcon />
-          </div>
-          <div className="icon-item icon-frog">
-            <FrogIcon />
-          </div>
+        <div className="icon-item icon-clock">
+          <ClockIcon />
         </div>
-        <div className="spinner-center-dot"></div>
+        <div className="icon-item icon-glitch">
+          <GlitchIcon />
+        </div>
+        <div className="icon-item icon-pig">
+          <PigIcon />
+        </div>
+        <div className="icon-item icon-frog">
+          <FrogIcon />
+        </div>
       </div>
     </main>
   );

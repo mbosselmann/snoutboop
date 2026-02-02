@@ -6,11 +6,11 @@ import { ClockIcon, GlitchIcon, PigIcon, FrogIcon } from "./Icons";
 
 type Option = "clock" | "glitch" | "pig" | "pomofroggo";
 
-const options: { id: Option; label: string; description: string }[] = [
-  { id: "clock", label: "Clock", description: "Time management" },
-  { id: "glitch", label: "Letter Glitch", description: "Digital aesthetics" },
-  { id: "pig", label: "Pig", description: "Playful energy" },
-  { id: "pomofroggo", label: "Pomofroggo", description: "Focus mode" },
+const options: { id: Option; label: string}[] = [
+  { id: "clock", label: "Clock"},
+  { id: "glitch", label: "Letter Glitch"},
+  { id: "pig", label: "Pig"},
+  { id: "pomofroggo", label: "Pomofroggo"},
 ];
 
 const iconMap: Record<Option, React.FC<{ className?: string }>> = {
@@ -36,9 +36,7 @@ function App() {
       <div className="bg-orb bg-orb--3"></div>
 
       <div className="content">
-        <h1>Choose Boop</h1>
-        <p className="subtitle">Select your experience</p>
-
+        
         <ul className="card-grid">
           {options.map((option) => {
             const Icon = iconMap[option.id];
@@ -56,7 +54,6 @@ function App() {
                     <Icon className="icon" />
                   </div>
                   <span className="card-label">{option.label}</span>
-                  <span className="card-description">{option.description}</span>
                 </button>
               </li>
             );
