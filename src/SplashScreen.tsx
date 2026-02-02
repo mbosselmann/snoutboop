@@ -9,7 +9,7 @@ interface SplashScreenProps {
 
 function SplashScreen({
   onLoadingComplete,
-  minDisplayTime = 5000,
+  minDisplayTime = 4000,
 }: SplashScreenProps) {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -25,14 +25,14 @@ function SplashScreen({
   if (!isLoading) return null;
 
   return (
-    <main>
-      <header>
+    <main className="splash-screen">
+      <header className="splash-header">
         <DotLottieReact
           src="https://lottie.host/850857d4-5bad-4e15-8412-25b7a20aed81/01sG1gKWau.lottie"
           loop
           autoplay
         />
-        <h1>SnoutBoop</h1>
+        <h1 className="splash-title">SnoutBoop</h1>
       </header>
       <div className="spinner"></div>
     </main>
