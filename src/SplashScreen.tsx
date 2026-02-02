@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { ClockIcon, GlitchIcon, PigIcon, FrogIcon } from "./Icons";
 import "./SplashScreen.css";
 
 interface SplashScreenProps {
@@ -34,7 +35,24 @@ function SplashScreen({
         />
         <h1 className="splash-title">SnoutBoop</h1>
       </header>
-      <div className="spinner"></div>
+      
+      <div className="icon-spinner">
+        <div className="icon-orbit">
+          <div className="icon-item icon-clock">
+            <ClockIcon />
+          </div>
+          <div className="icon-item icon-glitch">
+            <GlitchIcon />
+          </div>
+          <div className="icon-item icon-pig">
+            <PigIcon />
+          </div>
+          <div className="icon-item icon-frog">
+            <FrogIcon />
+          </div>
+        </div>
+        <div className="spinner-center-dot"></div>
+      </div>
     </main>
   );
 }
